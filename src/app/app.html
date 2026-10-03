@@ -1,4 +1,9 @@
-<h1>Kurser</h1>
+<h1>Laboration 4 - DT208G</h1>
+
+<h2>Kurser</h2>
+
+<label for="search">Sök kurs:</label>
+<input type="text" id="search" placeholder="Sök efter kurs..." (input)="onSearch($event)">
 
 <table>
     <thead>
@@ -10,7 +15,7 @@
     </thead>
 
     <tbody>
-        @for (course of courses(); track course.code) {
+        @for (course of filteredCourses(); track course.code) {
         <tr>
             <td>{{ course.code }}</td>
             <td>{{ course.coursename }}</td>
@@ -19,5 +24,7 @@
         }
     </tbody>
 </table>
+
+<footer>Av: Frida Ljungberg, 2026</footer>
 
 <router-outlet />

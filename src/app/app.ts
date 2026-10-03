@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CourseService } from './services/course';
 import { Course } from './models/course';
@@ -14,6 +14,18 @@ export class App {
   protected readonly title = signal('laboration4');
 
   courses = signal<Course[]>([]);
+
+  //Sök
+  searchTerm = signal('');
+  filteredCourses = computed(() => {
+    const search = this.searchTerm().toLowerCase();
+
+    return this.courses().filter(course =>
+      course.code.toLowerCase().includes(search) ||
+      course.coursename.toLowerCase().includes(search) ||
+      course.progression.toLowerCase().includes(search)
+    );
+  });
 
   constructor(private courseService: CourseService) { }
 
@@ -42,5 +54,10 @@ export class App {
     this.courses.update(courses =>
       [...courses].sort((a, b) => a.progression.localeCompare(b.progression))
     );
+  }
+
+  onSearch(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm.set(input.value);
   }
 }
