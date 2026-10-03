@@ -1,16 +1,14 @@
 <h1>Laboration 4 - DT208G</h1>
 
-<h2>Kurser</h2>
-
 <label for="search">Sök kurs:</label>
 <input type="text" id="search" placeholder="Sök efter kurs..." (input)="onSearch($event)">
 
 <table>
     <thead>
         <tr>
-            <th (click)="sortByCode()">Kurskod</th>
-            <th (click)="sortByName()">Kursnamn</th>
-            <th (click)="sortByProgression()">Progression</th>
+            <th> <span (click)="sortByCode()">Kurskod</span></th>
+            <th> <span (click)="sortByName()">Kursnamn</span></th>
+            <th> <span (click)="sortByProgression()">Progression</span></th>
         </tr>
     </thead>
 
