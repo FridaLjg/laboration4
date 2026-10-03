@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CourseService } from './services/course';
+import { Course } from './models/course';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +11,15 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('laboration4');
+
+  courses: Course[] = [];
+
+  constructor(private courseService: CourseService) { }
+
+  ngOnInit() {
+    this.courseService.getCourses().subscribe(data => {
+      this.courses = data;
+      console.log(this.courses);
+    });
+  }
 }
