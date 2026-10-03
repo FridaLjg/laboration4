@@ -12,14 +12,13 @@ import { Course } from './models/course';
 export class App {
   protected readonly title = signal('laboration4');
 
-  courses: Course[] = [];
+  courses = signal<Course[]>([]);
 
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
     this.courseService.getCourses().subscribe(data => {
-      this.courses = data;
-      console.log(this.courses);
+      this.courses.set(data);
     });
   }
 }

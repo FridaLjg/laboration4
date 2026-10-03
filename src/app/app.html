@@ -10,7 +10,7 @@
     </thead>
 
     <tbody>
-        @for (course of courses; track course.code) {
+        @for (course of courses(); track course.code) {
         <tr>
             <td>{{ course.code }}</td>
             <td>{{ course.coursename }}</td>
