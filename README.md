@@ -2,6 +2,9 @@
 
 ## Av: Frida Ljungberg, 2026
 
+### Länk
+https://laboration4dt208g.netlify.app/
+
 ### Om
 
 Denna applikation hämtar en lista med kurser och presenterar dessa i en tabell.
